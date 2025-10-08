@@ -1344,6 +1344,7 @@ form label {
 
 #fh5co-started {
   position: relative;
+  padding-bottom: 30px;
 }
 #fh5co-started .overlay {
   position: absolute;
@@ -1691,8 +1692,8 @@ form label {
   border: 2px solid var(--primary);
 }
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
-  background: #f366a3 !important;
-  border-color: #f366a3 !important;
+  background: #555A4F !important;
+  border-color: #555A4F !important;
 }
 .btn-primary.btn-outline {
   background: transparent;

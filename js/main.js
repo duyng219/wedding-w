@@ -213,6 +213,29 @@
 		$(window).stellar();
 	};
 
+	// Gift copy helpers
+	var initGiftCopy = function() {
+		// delegate for copy buttons
+		$(document).on('click', '[data-copy-target]', function(e){
+			e.preventDefault();
+			var $btn = $(this);
+			var selector = $btn.attr('data-copy-target');
+			var $input = $(selector);
+			if (!$input || $input.length === 0) return;
+			var value = $input.val();
+			if (navigator.clipboard && navigator.clipboard.writeText) {
+				navigator.clipboard.writeText(value);
+			} else {
+				$input[0].select();
+				document.execCommand('copy');
+			}
+			// feedback
+			var original = $btn.text();
+			$btn.text('Copied');
+			setTimeout(function(){ $btn.text(original); }, 300);
+		});
+	};
+
 	
 	$(function(){
 		mobileMenuOutsideClick();
@@ -226,6 +249,7 @@
 		loaderPage();
 		counter();
 		counterWayPoint();
+		initGiftCopy();
 	});
 
 
