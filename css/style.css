@@ -336,7 +336,7 @@ h1, h2, h3, h4, h5, h6, figure {
   .fh5co-cover .display-t,
   .fh5co-cover .display-tc {
     /* height: 1100px; */
-    height: 100vh;
+    height: 102vh;
   }
 }
 .fh5co-cover.fh5co-cover-sm {
@@ -590,7 +590,7 @@ h1, h2, h3, h4, h5, h6, figure {
 .date {
   display: block;
   margin-bottom: 20px;
-  font-size: 13px;
+  font-size: 12px;
   text-transform: uppercase;
   letter-spacing: 2px;
 }
@@ -1034,6 +1034,7 @@ form label {
 
 .fh5co-section-gray {
   background: rgba(0, 0, 0, 0.04);
+  padding-bottom: 20px;
 }
 
 .couple-wrap {
@@ -1187,6 +1188,7 @@ form label {
 }
 
 .fh5co-heading {
+  margin-top: 3em;
   margin-bottom: 5em;
 }
 .fh5co-heading.fh5co-heading-sm {
@@ -1894,3 +1896,20 @@ form label {
   cursor: pointer;
   pointer-events: auto;
 }
+
+
+/* .fh5co-loader {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background: #fff url('../images/loader.gif') no-repeat center center;
+    opacity: 1;
+    transition: opacity 0.3s;
+}
+.fh5co-loader.hide {
+    opacity: 0;
+    pointer-events: none;
+} */

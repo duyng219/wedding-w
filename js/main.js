@@ -254,3 +254,35 @@
 
 
 }());
+
+$(document).ready(function(){
+  $("#wedding-carousel").owlCarousel({
+    items: 3,
+    loop: true,
+    margin: 10,
+    nav: true,
+    dots: true,
+    responsive: {
+      0: { items: 1 },
+      600: { items: 2 },
+      1000: { items: 3 }
+    }
+  });
+});
+
+// $(document).ready(function() {
+//   $('.image-popup').magnificPopup({
+//     type: 'image',
+//     gallery: { enabled: true },
+//     removalDelay: 300,
+//     mainClass: 'mfp-fade'
+//   });
+// });
+
+$('#fh5co-gallery-list a[href=""], #fh5co-gallery-list a[href="#"]').on('click', function(e) {
+    e.preventDefault();
+});
+
+$(window).on('load', function() {
+    $('.fh5co-loader').addClass('hide');
+});
