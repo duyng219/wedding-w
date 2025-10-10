@@ -25,8 +25,11 @@
 		$('#page').prepend('<a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle fh5co-nav-white"><i></i></a>');
 		var clone1 = $('.menu-1 > ul').clone();
 		$('#fh5co-offcanvas').append(clone1);
-		var clone2 = $('.menu-2 > ul').clone();
-		$('#fh5co-offcanvas').append(clone2);
+		// Chỉ clone menu-2 nếu tồn tại
+		if ($('.menu-2 > ul').length > 0) {
+			var clone2 = $('.menu-2 > ul').clone();
+			$('#fh5co-offcanvas').append(clone2);
+		}
 
 		$('#fh5co-offcanvas .has-dropdown').addClass('offcanvas-has-dropdown');
 		$('#fh5co-offcanvas')
@@ -68,7 +71,6 @@
 		$('body').on('click', '.js-fh5co-nav-toggle', function(event){
 			var $this = $(this);
 
-
 			if ( $('body').hasClass('overflow offcanvas') ) {
 				$('body').removeClass('overflow offcanvas');
 			} else {
@@ -76,7 +78,12 @@
 			}
 			$this.toggleClass('active');
 			event.preventDefault();
+		});
 
+		// Đóng mobile menu khi click vào link
+		$('body').on('click', '#fh5co-offcanvas a', function(){
+			$('body').removeClass('overflow offcanvas');
+			$('.js-fh5co-nav-toggle').removeClass('active');
 		});
 	};
 

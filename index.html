@@ -395,10 +395,11 @@
 			<div><img src="images/gallery-16.jpg" alt="Ảnh 16"></div>
 			<div><img src="images/gallery-17.jpg" alt="Ảnh 17"></div>
 			<div><img src="images/gallery-18.jpg" alt="Ảnh 18"></div>
-			<div><img src="images/gallery-19.jpg" alt="Ảnh 18"></div>
-			<div><img src="images/gallery-20.jpg" alt="Ảnh 18"></div>
-			<div><img src="images/gallery-21.jpg" alt="Ảnh 18"></div>
-			<div><img src="images/gallery-22.jpg" alt="Ảnh 18"></div>
+			<div><img src="images/gallery-19.jpg" alt="Ảnh 19"></div>
+			<div><img src="images/gallery-20.jpg" alt="Ảnh 20"></div>
+			<div><img src="images/gallery-21.jpg" alt="Ảnh 21"></div>
+			<div><img src="images/gallery-22.jpg" alt="Ảnh 22"></div>
+			<div><img src="images/gallery-23.jpg" alt="Ảnh 23"></div>
 			<!-- Thêm các ảnh khác -->
 			</div>
 		</div>
@@ -632,6 +633,9 @@
 	<!-- Script More -->
 	<script src="js/activescroll.js"></script>
 	
+	<!-- EmailJS -->
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	
 	<!-- Script Snowfall -->
 	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 	<div id="snowfall"></div>
@@ -712,12 +716,54 @@
 		});
 	</script>
 
-	<!-- <script>
-    window.onload = function() {
-        // Scroll về đầu trang khi load lại
-        window.scrollTo(0, 0);
-    };
-	</script> -->
+	<script>
+		// Khởi tạo EmailJS
+		(function() {
+			emailjs.init("IbGh5Ul8cubpVb75w"); // Thay bằng Public Key
+		})();
+
+		// Xử lý form RSVP
+		document.addEventListener('DOMContentLoaded', function() {
+			const form = document.querySelector('#fh5co-started form');
+			const submitBtn = form.querySelector('button[type="submit"]');
+			
+			form.addEventListener('submit', function(e) {
+				e.preventDefault();
+				
+				const name = form.querySelector('#name').value;
+				const email = form.querySelector('#email').value;
+				
+				if (!name || !email) {
+					alert('Vui lòng điền đầy đủ thông tin!');
+					return;
+				}
+				
+				// Hiển thị loading
+				submitBtn.textContent = 'Đang gửi...';
+				submitBtn.disabled = true;
+				
+				// Gửi email (service-id & template-id) 
+				emailjs.send('service_fzx1ywa', 'template_rgm362u', {
+					to_name: 'Hữu Duy & Thi Ca',
+					from_name: name,
+					from_email: email,
+					message: `${name} sẽ tham dự đám cưới của chúng ta vào ngày 27-28/02/2026!`
+				})
+				.then(function(response) {
+					alert('Cảm ơn bạn đã xác nhận tham dự! Chúng mình rất mong được gặp bạn.');
+					form.reset();
+				}, function(error) {
+					alert('Có lỗi xảy ra. Vui lòng thử lại sau!');
+					console.error('EmailJS Error:', error);
+				})
+				.finally(function() {
+					submitBtn.textContent = 'I am Attending';
+					submitBtn.disabled = false;
+				});
+			});
+		});
+	</script>
 
 	</body>
 </html>
+ 
